@@ -17,7 +17,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <property name="suffix" value=".jsp"/>
     </bean>
 
-
+    <bean class="io.khasang.orgmanager.model.Hello">
+        <property name="hello" value="Hello my App!!!"/>
+    </bean>
 
     <!-- This tag allows for mapping the dispatcher-servlet to "/" -->
 

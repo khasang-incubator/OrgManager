@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration(locations = {"file:src/main/java/io/khasang/orgmanager/model/model.xml"})
+@ContextConfiguration(locations = {"file:webapp/WEB-INF/spring-dispatcher-servlet.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppControllerTest {
     @Autowired

@@ -17,12 +17,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean class="io.khasang.orgmanager.model.Hello">
-        <property name="hello" value="Hello Spring App!!!"/>
-    </bean>
+
 
     <!-- This tag allows for mapping the dispatcher-servlet to "/" -->
-    <mvc:default-servlet-handler/>
+
+    <mvc:default-servlet-handler default-servlet-name="spring-dispatcher"/>
 
     <!-- resources exclusions from servlet mapping -->
     <!--  <mvc:resources mapping="/css/**" location="/WEB-INF/views/css/"/>-->

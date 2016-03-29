@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@Component
-@ContextConfiguration(locations = {"classpath:/WEB-INF/spring-dispatcher-servlet.xml"})
+@ContextConfiguration(locations = {"file:src/main/java/io/khasang/orgmanager/model/model.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppControllerTest {
     @Autowired
@@ -16,7 +15,7 @@ public class AppControllerTest {
 
     @Test
     public void indexTest() {
-        Assert.assertNotNull(new Hello());
-        Assert.assertEquals("This message not return hello!", "Hello Spring App!!!", hello.getHello());
+        Assert.assertNotNull(hello);
+        Assert.assertEquals("This message not return hello!", "Hello my App!!!", hello.getHello());
     }
 }

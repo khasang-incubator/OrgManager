@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @Component
-@ContextConfiguration(locations = {"classpath:/WEB-INF/spring-dispatcher-servlet.xml"})
+@ContextConfiguration(locations = {"file:webapp/WEB-INF/spring-dispatcher-servlet.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AppControllerTest {
     @Autowired

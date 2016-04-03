@@ -11,6 +11,7 @@ http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <mvc:annotation-driven/>
     <context:component-scan base-package="io.khasang.orgmanager.controller"/>
+    <context:component-scan base-package="io.khasang.orgmanager.model"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -20,6 +21,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <bean class="io.khasang.orgmanager.model.Hello">
         <property name="hello" value="Hello my App!!!"/>
     </bean>
+
 
     <!-- This tag allows for mapping the dispatcher-servlet to "/" -->
 

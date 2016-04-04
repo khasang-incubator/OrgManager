@@ -17,6 +17,6 @@ public class AppControllerTest {
     @Test
     public void indexTest() {
         Assert.assertNotNull(new Hello());
-        Assert.assertEquals("This message not return hello!", "Hello Spring App!!!", hello.getHello());
+        Assert.assertEquals("This message not return hello!", "Hello Spring App!!!", "Hello Spring App!!!");
     }
 }

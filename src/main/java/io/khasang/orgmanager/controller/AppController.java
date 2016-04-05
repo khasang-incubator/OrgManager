@@ -22,4 +22,9 @@ public class AppController {
         model.addAttribute("index", "this is my hi app"+param);
         return "view2";
     }
+
+    @RequestMapping("/secure")
+    public String index(Model model) {
+        return "securepage";
+    }
 }

@@ -18,7 +18,7 @@ public class TestSapper {
 				if (cellValue == 1) {
 					bombsCount++;
 				} else if (cellValue != 0) {
-					Assert.fail("Unexpectede cell value: " + cellValue);
+					Assert.fail("Unexpected cell value: " + cellValue);
 				}
 			}
 		}

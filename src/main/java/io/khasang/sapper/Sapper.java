@@ -15,6 +15,11 @@ public class Sapper {
     public int[][] getField(){
         return this.field;
     }
+    public int getValue(int row,int col){
+        int result =0;
+
+        return  result;
+    }
     private void createField(){
         int bombsCount = 0;
         while( bombsCount<BOMBS_COUNT){

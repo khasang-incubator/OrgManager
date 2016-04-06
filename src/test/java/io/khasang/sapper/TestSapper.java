@@ -14,7 +14,7 @@ public class TestSapper {
 		int bombsCount = 0;
 		for (int row = 0; row < field.length; row++) {
 			for (int col = 0; col < field.length; col++) {
-				int cellValue = field[row][col]; 
+				int cellValue = sapper.getValue(row,col);
 				if (cellValue == 1) {
 					bombsCount++;
 				} else if (cellValue != 0) {
@@ -22,7 +22,6 @@ public class TestSapper {
 				}
 			}
 		}
-		Assert.assertEquals("Invalid bombs count", bombsCount, Sapper.BOMBS_COUNT);
+		Assert.assertEquals("Invalid bombs count", Sapper.BOMBS_COUNT, bombsCount);
 	}
-
 }

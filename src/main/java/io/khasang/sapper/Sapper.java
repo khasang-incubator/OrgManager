@@ -3,6 +3,8 @@ package io.khasang.sapper;
 public class Sapper {
 	
 	public static final int SIZE = 10;
+	
+	public static final int BOMBS_COUNT = 25;
 
 	private int[][] field;
 	

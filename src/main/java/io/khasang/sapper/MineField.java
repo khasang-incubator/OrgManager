@@ -1,22 +1,23 @@
 package io.khasang.sapper;
 
 public class MineField {
-	public static final int FIELD_SIZE = 10;
+	public int FIELD_SIZE;
 	public static final int BOMBS_COUNT = 25;
 	public static final int VALUE_BOMB = 1;
 	public static final int VALUE_EMPTY = 0;
 	
 	private int[][] field;
 
-	public MineField() {
+	public MineField(int size) {
+		this.FIELD_SIZE=size;
 		this.field = new int[FIELD_SIZE][FIELD_SIZE];
 		createRandomField();
 	}
 
 	int getSize() {
-		return 0;
+		return FIELD_SIZE;
 	}
-	
+
 	/**
 	 * Sets new field. Only for testing purpose
 	 * @param field

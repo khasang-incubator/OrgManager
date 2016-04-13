@@ -2,3 +2,5 @@
 *.git.iml
 /out/
 /target/
+orgmanager.iml
+classes/

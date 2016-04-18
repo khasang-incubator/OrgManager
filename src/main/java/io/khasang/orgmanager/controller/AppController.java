@@ -16,6 +16,13 @@ public class AppController {
     @Autowired
     DataSelect dataSelect;
 
+    @RequestMapping("/backup")
+    public String makeBackup(Model model){
+        String result=dataSelect.makeBackup();
+        model.addAttribute("result",result);
+        return "backup";
+    }
+
     @RequestMapping("/selectusers")
     public String selectUsers(Model model){
         model.addAttribute("users", dataSelect.getUsers());

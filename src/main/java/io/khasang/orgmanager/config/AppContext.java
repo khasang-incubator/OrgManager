@@ -3,12 +3,16 @@ package io.khasang.orgmanager.config;
 import io.khasang.orgmanager.model.DataSelect;
 import io.khasang.orgmanager.model.Hello;
 import org.postgresql.Driver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 @Configuration
+@PropertySource("classpath:config.properties")
 public class AppContext {
     @Bean
     public Hello hello() {
@@ -34,13 +38,19 @@ public class AppContext {
         return new Driver();
     }
 
+    @Autowired
+    Environment env;
+
     @Bean
     public SimpleDriverDataSource dataSource(){
         SimpleDriverDataSource ds=new SimpleDriverDataSource();
         ds.setDriver(driver());
-        ds.setUrl("jdbc:postgresql://localhost:5432/orgmanager");
-        ds.setUsername("root");
-        ds.setPassword("root");
+        ds.setUrl(env.getProperty("db.connstring"));
+        ds.setUsername(env.getProperty("db.username"));
+        ds.setPassword(env.getProperty("db.password"));
+
+    //    ds.setUsername("root");
+     //   ds.setPassword("root");
         return ds;
     }
 }

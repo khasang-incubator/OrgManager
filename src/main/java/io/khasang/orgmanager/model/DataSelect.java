@@ -1,5 +1,8 @@
 package io.khasang.orgmanager.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,29 +16,30 @@ import java.util.Map;
 
 
 public class DataSelect {
+    @Autowired
+    Environment environment;
     private JdbcTemplate jdbcTemplate;
     private String result;
 
-
     public String makeBackup() {
         final List<String> baseCmds = new ArrayList<String>();
-        baseCmds.add("C:\\Program Files\\PostgreSQL\\9.5\\bin\\pg_dump.exe");
+        baseCmds.add(environment.getProperty("backup.processorpath"));
         baseCmds.add("-h");
-        baseCmds.add("localhost");
+        baseCmds.add(environment.getProperty("backup.hostname"));
         baseCmds.add("-p");
-        baseCmds.add("5432");
+        baseCmds.add(environment.getProperty("backup.port"));
         baseCmds.add("-U");
-        baseCmds.add("root");
+        baseCmds.add(environment.getProperty("backup.user"));
         baseCmds.add("-b");
         baseCmds.add("-v");
         baseCmds.add("-f");
-        baseCmds.add("C:\\DB\\out.sql");
-        baseCmds.add("orgmanager");
+        baseCmds.add(environment.getProperty("backup.destinationfile"));
+        baseCmds.add(environment.getProperty("backup.db"));
         final ProcessBuilder pb = new ProcessBuilder(baseCmds);
 
         // Set the password
         final Map<String, String> env = pb.environment();
-        env.put("PGPASSWORD", "root");
+        env.put("PGPASSWORD", environment.getProperty("backup.password"));
 
         try {
             final Process process = pb.start();

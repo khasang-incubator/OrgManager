@@ -1,8 +1,6 @@
 package io.khasang.orgmanager.controller;
 
-import io.khasang.orgmanager.model.Hello;
-import io.khasang.orgmanager.model.SecureAccess;
-import io.khasang.orgmanager.model.SuperSecureAccess;
+import io.khasang.orgmanager.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +14,10 @@ public class AppController {
     SecureAccess secureAccess;
     @Autowired
     SuperSecureAccess superSecureAccess;
+    @Autowired
+    DataSelect dataSelect;
+    @Autowired
+    DataClear dataClear;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -33,5 +35,23 @@ public class AppController {
     public String superSecure(Model model) {
         model.addAttribute("supersecure", superSecureAccess.info());
         return "supersecure";
+    }
+
+    @RequestMapping("/createbase")
+    public String createBase(Model model) {
+        model.addAttribute("createbase", dataSelect.getResult());
+        return "createbase";
+    }
+
+    @RequestMapping("/deletelastdata")
+    public String deleteLastData(Model model) {
+        model.addAttribute("status", dataClear.getResultDeleteLastData());
+        return "cleardata";
+    }
+
+    @RequestMapping("/deleteperioddata")
+    public String deletePeriodDate(Model model) {
+        model.addAttribute("status", dataClear.getResultDeletePeriodDate());
+        return "cleardata";
     }
 }

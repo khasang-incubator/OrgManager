@@ -7,6 +7,8 @@
 	http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <mvc:annotation-driven/>
     <context:component-scan base-package="io.khasang.orgmanager.controller"/>
+    <!--find property file. See bean id='dataSource' for example ${jdbc.hsqldb.driverClass}-->
+    <context:property-placeholder location="classpath:util.properties" />
 
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -24,12 +26,12 @@
 
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-        <property name="driver" ref="driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/orgmanager"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="driverClass" value="${jdbc.postgresql.driverClass}"/>
+        <property name="url" value="${jdbc.postgresql.url}"/>
+        <property name="username" value="${jdbc.postgresql.username}"/>
+        <property name="password" value="${jdbc.postgresql.password}"/>
     </bean>
 
-    <bean id="driver" class="org.postgresql.Driver"/>
+    <!--<bean id="driver" class="org.postgresql.Driver"/>-->
 </beans>
 

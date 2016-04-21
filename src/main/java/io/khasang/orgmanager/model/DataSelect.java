@@ -1,8 +1,8 @@
 package io.khasang.orgmanager.model;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +28,10 @@ public class DataSelect {
     public List<String[]> selectWiwthInnerJoin(String tableName, String joinTableName){
         List<String[]> selectResult = new ArrayList<>();
         try {
-            ResultSet resultSet = (ResultSet) jdbcTemplate.queryForRowSet(
+            SqlRowSet resultSet = jdbcTemplate.queryForRowSet(
                     "SELECT resources.name, users.nick\n" +
                             "FROM " + tableName + "\n" +
-                            "INNER JOIN " + joinTableName + " ON " + joinTableName + ".id = " + tableName + ".userid\n" +
+                            "INNER JOIN " + joinTableName + " ON " + tableName + ".\"user_ID\"=" + joinTableName + ".id\n" +
                             "ORDER BY " + tableName + ".name;");
             while (resultSet.next()) {
                 String resourceName = resultSet.getString(1);

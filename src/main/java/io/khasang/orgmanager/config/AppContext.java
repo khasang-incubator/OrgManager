@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@PropertySource("classpath:config.properties")
+@PropertySource("classpath:util.properties")
 public class AppContext {
     @Autowired
     Environment environment;

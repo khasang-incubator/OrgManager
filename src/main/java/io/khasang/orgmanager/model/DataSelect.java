@@ -21,6 +21,11 @@ public class DataSelect {
     private JdbcTemplate jdbcTemplate;
     private String result;
 
+    /**
+     * @autor Radiofisik
+     * @version 1.0
+     * method makes backup of database. see /resources/config.properties file for properties
+     */
     public String makeBackup() {
         final List<String> baseCmds = new ArrayList<String>();
         baseCmds.add(environment.getProperty("backup.processorpath"));
@@ -36,14 +41,11 @@ public class DataSelect {
         baseCmds.add(environment.getProperty("backup.destinationfile"));
         baseCmds.add(environment.getProperty("backup.db"));
         final ProcessBuilder pb = new ProcessBuilder(baseCmds);
-
         // Set the password
         final Map<String, String> env = pb.environment();
         env.put("PGPASSWORD", environment.getProperty("backup.password"));
-
         try {
             final Process process = pb.start();
-
             final BufferedReader r = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             String line;
             StringBuffer sb=new StringBuffer();
@@ -61,23 +63,34 @@ public class DataSelect {
         }
     }
 
+    /**
+     * @autor Radiofisik
+     * @version 1.0
+     * method selects users from database
+     */
     public DataSelect(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
     public void createDataTable() {
         try {
             jdbcTemplate.execute("DROP TABLE  IF EXISTS  users");
 
             jdbcTemplate.execute("CREATE TABLE users " +
                     "(id SERIAL PRIMARY KEY, name TEXT, password TEXT)");
-            result = "Table created sucesfull!";
+            result = "Table selected successful!";
         } catch (Exception e) {
             result = e + " ";
             e.printStackTrace();
         }
     }
 
+    /**
+     * @autor Radiofisik
+     * @version 1.0
+     * method inserts user to database
+     * @param user - the name of the user
+     * @param password - the password of the user
+     */
     public void insertUser(String user, String password) {
         try {
             jdbcTemplate.execute("INSERT INTO users (name, password) VALUES ('" + user + "','" + password + "')");

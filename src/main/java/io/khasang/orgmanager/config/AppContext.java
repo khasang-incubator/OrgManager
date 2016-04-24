@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 @Configuration
@@ -42,9 +43,9 @@ public class AppContext {
     Environment env;
 
     @Bean
-    public SimpleDriverDataSource dataSource(){
-        SimpleDriverDataSource ds=new SimpleDriverDataSource();
-        ds.setDriver(driver());
+    public DriverManagerDataSource dataSource(){
+        DriverManagerDataSource ds=new DriverManagerDataSource();
+       // ds.setDriver(driver());
         ds.setUrl(env.getProperty("db.connstring"));
         ds.setUsername(env.getProperty("db.username"));
         ds.setPassword(env.getProperty("db.password"));

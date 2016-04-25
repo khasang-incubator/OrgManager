@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
@@ -43,6 +46,18 @@ public class AppController {
         model.addAttribute("index", hello.getHello());
         return "requisites";
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView getLoginForm(@RequestParam(required=false) String authFailed, String logout) {
+        String message="";
+        if(authFailed != null) {
+            message = "Invalid username or password, try again !";
+        } else if (logout != null) {
+            message = "Logged Out successfully, login again to continue!";
+        }
+        return new ModelAndView("login", "message", message);
+    }
+
 
     @RequestMapping("/secure")
     public String secure(Model model) {

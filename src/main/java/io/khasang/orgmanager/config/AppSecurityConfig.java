@@ -22,6 +22,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/secure/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/supersecure/**").access("hasRole('ROLE_SUPERADMIN')")
-                .and().formLogin().defaultSuccessUrl("/", false);
+                .and().formLogin().defaultSuccessUrl("/", false)
+                .loginPage("/login")
+                .loginProcessingUrl("/j_spring_security_check")
+                .failureUrl("/login?error=true");
     }
 }

@@ -26,6 +26,24 @@ public class AppController {
         return "index";
     }
 
+    @RequestMapping("/news")
+    public String news(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "news";
+    }
+
+    @RequestMapping("/contacts")
+    public String contacts(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "contacts";
+    }
+
+    @RequestMapping("/requisites")
+    public String requisites(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "requisites";
+    }
+
     @RequestMapping("/secure")
     public String secure(Model model) {
         model.addAttribute("secure", secureAccess.info());

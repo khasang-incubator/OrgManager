@@ -40,6 +40,12 @@ public class AppContext {
         return jdbcTemplate;
     }
 
+    /*
+     * Инициализация DriverManagerDataSource
+     * @return Созданный DriverManagerDataSource
+     * @author Андрей Поляков
+     * @version 1.0
+     */
     @Bean
     public DriverManagerDataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();

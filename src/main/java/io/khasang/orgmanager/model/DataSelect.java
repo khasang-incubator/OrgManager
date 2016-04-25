@@ -25,6 +25,14 @@ public class DataSelect {
         }
     }
 
+    /*
+     *  Делает выборку из БД по inner join
+     *  @param tableName Имя таблицы, источника данных
+     *  @param joinTableName Имя таблицы для присоединения
+     *  @return List<String[]> всех подходящих строк таблицы БД, если успешно, null, при возникновении исключения
+     *  @author Андрей Поляков
+     *  @version 1.0
+     */
     public List<String[]> selectWiwthInnerJoin(String tableName, String joinTableName){
         List<String[]> selectResult = new ArrayList<>();
         try {
@@ -51,6 +59,11 @@ public class DataSelect {
         return result;
     }
 
+    /*
+     * @return Результат выполнения selectWiwthInnerJoin
+     * @author Андрей Поляков
+     * @version 1.0
+     */
     public List<String[]> getSelectResult(){
         return selectWiwthInnerJoin("resources", "users");
     }

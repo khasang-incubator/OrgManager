@@ -13,8 +13,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@PropertySource("classpath:config.properties")
+@PropertySource("classpath:util.properties")
 public class AppContext {
+    @Autowired
+    Environment environment;
+
     @Bean
     public Hello hello(){
         return new Hello();
@@ -24,32 +27,37 @@ public class AppContext {
     public SecureAccess secureAccess(){
         return new SecureAccess();
     }
-	
-	 JdbcTemplate jdbcTemplate(){
-        JdbcTemplate jdt=new JdbcTemplate();
-        jdt.setDataSource(dataSource());
-        return jdt;
-    }
-
-    @Bean
-    DataSelect dataSelect(){
-        return new DataSelect(jdbcTemplate());
-    }
-	
-    @Autowired
-    Environment env;
-
-    @Bean
-    public DriverManagerDataSource dataSource(){
-        DriverManagerDataSource ds=new DriverManagerDataSource();
-        ds.setUrl(env.getProperty("db.connstring"));
-        ds.setUsername(env.getProperty("db.username"));
-        ds.setPassword(env.getProperty("db.password"));
-        return ds;
-    }
 
     @Bean
     public SuperSecureAccess superSecureAccess(){
         return new SuperSecureAccess();
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
+    }
+
+    /*
+     * Инициализация DriverManagerDataSource
+     * @return Созданный DriverManagerDataSource
+     * @author Андрей Поляков
+     * @version 1.0
+     */
+    @Bean
+    public DriverManagerDataSource dataSource(){
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
+        dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
+        dataSource.setUsername(environment.getProperty("jdbc.postgresql.username"));
+        dataSource.setPassword(environment.getProperty("jdbc.postgresql.password"));
+        return dataSource;
+    }
+
+        @Bean
+    DataSelect dataSelect(){
+        return new DataSelect(jdbcTemplate());
     }
 }

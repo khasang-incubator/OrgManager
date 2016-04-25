@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
@@ -40,6 +41,35 @@ public class AppController {
         return "backup";
     }
 
+    @RequestMapping("/news")
+    public String news(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "news";
+    }
+
+    @RequestMapping("/contacts")
+    public String contacts(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "contacts";
+    }
+
+    @RequestMapping("/requisites")
+    public String requisites(Model model) {
+        model.addAttribute("index", hello.getHello());
+        return "requisites";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView getLoginForm(@RequestParam(required=false) String authFailed, String logout) {
+        String message="";
+        if(authFailed != null) {
+            message = "Invalid username or password, try again !";
+        } else if (logout != null) {
+            message = "Logged Out successfully, login again to continue!";
+        }
+        return new ModelAndView("login", "message", message);
+    }
+
     @RequestMapping("/secure")
     public String secure(Model model) {
         model.addAttribute("secure", secureAccess.info());
@@ -50,5 +80,17 @@ public class AppController {
     public String superSecure(Model model) {
         model.addAttribute("supersecure", superSecureAccess.info());
         return "supersecure";
+    }
+
+    @RequestMapping("/createbase")
+    public String createBase(Model model){
+        model.addAttribute("createbase", dataSelect.getResult());
+        return "createbase";
+    }
+
+    @RequestMapping("/innerjoin")
+    public String selectWithInnerJoin(Model model){
+        model.addAttribute("tableResult", dataSelect.getSelectResult());
+        return "innerjoin";
     }
 }

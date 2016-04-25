@@ -14,6 +14,7 @@
 
   <title>Home Page</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -53,43 +54,17 @@
     </nav>
   </header>
 
-  <div id="container" class="container">
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
+  <div class="inner cover">
+    <h1 class="cover-heading">Добро пожаловать!</h1>
+    <p class="lead">Войдите, для того, чтобы управлять задачами. Без регистрации доступны публичные страницы (Новости, Контакты, Реквизиты)</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-default">Узнать больше</a>
+    </p>
   </div>
 
   <footer>
     <div class="container"><hr>
-      <p class="pull-right">(c) OrgManager team 2016</p>
+      <p>(c) OrgManager team 2016</p>
     </div>
   </footer>
 

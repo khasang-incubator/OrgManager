@@ -13,6 +13,8 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <jdk.version>1.8</jdk.version>
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
+        <hibernate-version>5.0.1.Final</hibernate-version>
+        <postgresql.version>9.4-1200-jdbc41</postgresql.version>
     </properties>
 
     <dependencies>
@@ -43,6 +45,27 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--support orm classes-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--support @Service, @Repository -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <!-- Hibernate -->
+        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core. Support @PersistenceContext -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
 
         <!--Tests-->
         <dependency>
@@ -60,12 +83,14 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--PostgreSQL-->
+
+        <!-- The tutorials use the PostgreSQL 9.3.5 database -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4-1200-jdbc41</version>
+            <version>${postgresql.version}</version>
         </dependency>
+
 
         <!--Spring Security-->
         <dependency>

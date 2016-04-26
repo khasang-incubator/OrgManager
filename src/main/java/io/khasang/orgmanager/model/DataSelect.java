@@ -1,5 +1,6 @@
 package io.khasang.orgmanager.model;
 
+import io.khasang.orgmanager.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -16,9 +17,18 @@ import java.util.Map;
 
 @Component
 public class DataSelect {
+    public DataSelect(){}
     @Autowired
     Environment environment;
     private String result;
+
+    @Autowired
+    UserDao userDao;
+
+    public List<User> getUsers() {
+        return userDao.getAll();
+    }
+
 
     /**
      * @autor Radiofisik

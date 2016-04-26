@@ -1,7 +1,6 @@
 package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.UserDao;
-import io.khasang.orgmanager.dao.UserDaoImpl;
 import io.khasang.orgmanager.model.DataSelect;
 import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.User;
@@ -22,6 +21,12 @@ public class AppController {
     UserDao userDao;
 
 
+    @RequestMapping("/selectusers")
+    public String selectusers(Model model){
+        model.addAttribute("list",dataSelect.getUsers());
+        return "users";
+    }
+
     @RequestMapping("/adduser")
     public String adduser(Model model) {
         User user = new User();
@@ -30,6 +35,8 @@ public class AppController {
         userDao.save(user);
         return "backup";
     }
+
+
 
     @RequestMapping("/backup")
     public String makeBackup(Model model) {

@@ -1,9 +1,7 @@
-package io.khasang.orgmanager.dao;
+package io.khasang.orgmanager.dao.implementation;
 
-
+import io.khasang.orgmanager.dao.UserDao;
 import io.khasang.orgmanager.model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository

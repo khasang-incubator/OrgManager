@@ -1,9 +1,9 @@
-package io.khasang.orgmanager.dao;
+package io.khasang.orgmanager.dao.implementation;
 
+import io.khasang.orgmanager.dao.GenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class GenericDaoJpa<T> implements GenericDao<T> {
 
     @Transactional(readOnly = true)
     public List<T> getAll() {
-        return getSession().createQuery("select o from"+type.getName()+"o").list();
+        return getSession().createCriteria(type).list();
     }
 
     @Override

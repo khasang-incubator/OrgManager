@@ -44,6 +44,12 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--support orm classes-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <!--Tests-->
         <dependency>

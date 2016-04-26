@@ -72,12 +72,4 @@ public class AppContext {
         txManager.setSessionFactory(s);
         return txManager;
     }
-
-    @Bean
-    @Autowired
-    public UserDao userDao(SessionFactory s){
-        UserDao userDao=new UserDaoImpl(s);
-        return userDao;
-    }
-
 }

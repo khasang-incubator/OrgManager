@@ -14,18 +14,16 @@ public class GenericDaoJpa<T> implements GenericDao<T> {
 
     private Class<T> type;
 
+    @Autowired
     private SessionFactory sessionFactory;
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
-    public GenericDaoJpa(Class<T> type, SessionFactory sessionFactory) {
+    public GenericDaoJpa(Class<T> type) {
         super();
         this.type = type;
-        this.sessionFactory=sessionFactory;
-
-
     }
 
     @Transactional(readOnly = true)

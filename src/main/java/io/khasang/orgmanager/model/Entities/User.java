@@ -1,11 +1,26 @@
-package io.khasang.orgmanager.model;
+package io.khasang.orgmanager.model.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String password;
+
+    @Column
+    private Integer roleId;
+
+
+
     public Integer getId() {
         return id;
     }
@@ -22,12 +37,6 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String name;
-
     public String getPassword() {
         return password;
     }
@@ -36,5 +45,5 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    private String password;
+
 }

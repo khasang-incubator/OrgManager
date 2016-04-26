@@ -3,29 +3,29 @@ package io.khasang.orgmanager.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
+@Transactional
 public class GenericDaoJpa<T> implements GenericDao<T> {
 
     private Class<T> type;
 
-
-    @Autowired
-    protected SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
-    public GenericDaoJpa(Class<T> type) {
+    public GenericDaoJpa(Class<T> type, SessionFactory sessionFactory) {
         super();
         this.type = type;
+        this.sessionFactory=sessionFactory;
+
+
     }
 
     @Transactional(readOnly = true)

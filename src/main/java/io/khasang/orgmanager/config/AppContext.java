@@ -1,19 +1,16 @@
 package io.khasang.orgmanager.config;
 
 import io.khasang.orgmanager.dao.UserDao;
-import io.khasang.orgmanager.model.DataSelect;
+import io.khasang.orgmanager.dao.UserDaoImpl;
 import io.khasang.orgmanager.model.Hello;
 import org.hibernate.SessionFactory;
-import org.postgresql.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -77,8 +74,9 @@ public class AppContext {
     }
 
     @Bean
-    public UserDao userDao(){
-        UserDao userDao=new UserDao();
+    @Autowired
+    public UserDao userDao(SessionFactory s){
+        UserDao userDao=new UserDaoImpl(s);
         return userDao;
     }
 

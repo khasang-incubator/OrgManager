@@ -1,12 +1,11 @@
 package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.UserDao;
+import io.khasang.orgmanager.dao.UserDaoImpl;
 import io.khasang.orgmanager.model.DataSelect;
 import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.User;
-import org.jgroups.protocols.S3_PING;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AppController {
     @Autowired
     DataSelect dataSelect;
-/*
+
     @Autowired
-    UserDao userDao;*/
+    UserDao userDao;
 
 
     @RequestMapping("/adduser")
@@ -28,7 +27,6 @@ public class AppController {
         User user = new User();
         user.setName("firstuser");
         user.setPassword("secretpassword");
-        UserDao userDao=new UserDao();
         userDao.save(user);
         return "backup";
     }

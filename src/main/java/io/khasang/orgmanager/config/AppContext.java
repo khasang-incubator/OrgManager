@@ -1,19 +1,33 @@
 package io.khasang.orgmanager.config;
 
+import io.khasang.orgmanager.dao.UserDao;
 import io.khasang.orgmanager.model.DataSelect;
 import io.khasang.orgmanager.model.Hello;
+import org.hibernate.SessionFactory;
 import org.postgresql.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:config.properties")
+@PropertySource("classpath:hibernate.properties")
+
+@ComponentScan("io.khasang.orgmanager")
+@EnableTransactionManagement
+
 public class AppContext {
     @Bean
     public Hello hello() {
@@ -22,36 +36,50 @@ public class AppContext {
         return hello;
     }
 
-    @Bean
-    JdbcTemplate jdbcTemplate(){
-        JdbcTemplate jdt=new JdbcTemplate();
-        jdt.setDataSource(dataSource());
-        return jdt;
-    }
-
-    @Bean
-    DataSelect dataSelect(){
-        return new DataSelect(jdbcTemplate());
-    }
-
-    @Bean
-    Driver driver(){
-        return new Driver();
-    }
-
     @Autowired
-    Environment env;
+    private Environment environment;
+
 
     @Bean
-    public DriverManagerDataSource dataSource(){
-        DriverManagerDataSource ds=new DriverManagerDataSource();
-       // ds.setDriver(driver());
-        ds.setUrl(env.getProperty("db.connstring"));
-        ds.setUsername(env.getProperty("db.username"));
-        ds.setPassword(env.getProperty("db.password"));
-
-    //    ds.setUsername("root");
-     //   ds.setPassword("root");
-        return ds;
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setPackagesToScan("io.khasang.orgmanager.model");
+        sessionFactory.setHibernateProperties(hibernateProperties());
+        return sessionFactory;
     }
+
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        return dataSource;
+    }
+
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        return properties;
+    }
+
+    @Bean
+    @Autowired
+    public HibernateTransactionManager transactionManager(SessionFactory s) {
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(s);
+        return txManager;
+    }
+
+    @Bean
+    public UserDao userDao(){
+        UserDao userDao=new UserDao();
+        return userDao;
+    }
+
 }

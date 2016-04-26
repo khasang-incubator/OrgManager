@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/AppContext.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/AppSecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/application/WebConfig.java</file>
+        </fileset>
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+      </configuration>
+    </facet>
     <facet type="web" name="Web">
       <configuration>
         <webroots>
@@ -10,16 +25,6 @@
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/resources" />
         </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/AppContext.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/AppSecurityConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/HibernateConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/io/khasang/orgmanager/config/application/WebConfig.java</file>
-        </fileset>
       </configuration>
     </facet>
   </component>

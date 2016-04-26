@@ -14,11 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
+@Component
 public class DataSelect {
     @Autowired
     Environment environment;
-    private JdbcTemplate jdbcTemplate;
     private String result;
 
     /**
@@ -63,61 +62,4 @@ public class DataSelect {
         }
     }
 
-    /**
-     * @autor Radiofisik
-     * @version 1.0
-     * method selects users from database
-     */
-    public DataSelect(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-    public void createDataTable() {
-        try {
-            jdbcTemplate.execute("DROP TABLE  IF EXISTS  users");
-
-            jdbcTemplate.execute("CREATE TABLE users " +
-                    "(id SERIAL PRIMARY KEY, name TEXT, password TEXT)");
-            result = "Table selected successful!";
-        } catch (Exception e) {
-            result = e + " ";
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @autor Radiofisik
-     * @version 1.0
-     * method inserts user to database
-     * @param user - the name of the user
-     * @param password - the password of the user
-     */
-    public void insertUser(String user, String password) {
-        try {
-            jdbcTemplate.execute("INSERT INTO users (name, password) VALUES ('" + user + "','" + password + "')");
-        } catch (Exception e) {
-            result = e.getStackTrace().toString();
-            e.printStackTrace();
-        }
-    }
-
-    public List<String> getUsers() {
-        List<String> users = new ArrayList<>();
-        try {
-            List<java.util.Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT name FROM users");
-            for (java.util.Map<String, Object> row : rows) {
-                users.add((String) row.get("name"));
-            }
-        } catch (Exception e) {
-            result = e.getStackTrace().toString();
-            e.printStackTrace();
-        }
-        return users;
-    }
-
-    public String getResult() {
-        createDataTable();
-        insertUser("user1", "passw0rd");
-        insertUser("user5", "passw0r5d");
-        return result;
-    }
 }

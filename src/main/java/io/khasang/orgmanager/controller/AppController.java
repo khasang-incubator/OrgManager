@@ -1,13 +1,14 @@
 package io.khasang.orgmanager.controller;
 
+import io.khasang.orgmanager.dao.UserDao;
 import io.khasang.orgmanager.model.DataSelect;
+import io.khasang.orgmanager.model.Entities.User;
 import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.SecureAccess;
 import io.khasang.orgmanager.model.SuperSecureAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,11 +24,23 @@ public class AppController {
     SuperSecureAccess superSecureAccess;
     @Autowired
     DataSelect dataSelect;
+    @Autowired
+    UserDao userDao;
 
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("index", hello.getHello());
         return "index";
+    }
+
+    @RequestMapping("/createuser")
+    public  String createuser(Model model){
+        User user=new User();
+        user.setName("admin");
+        user.setPassword("somehash");
+        userDao.save(user);
+        model.addAttribute("result","It seems to be ok");
+        return "backup";
     }
 
     /**
@@ -82,11 +95,7 @@ public class AppController {
         return "supersecure";
     }
 
-    @RequestMapping("/createbase")
-    public String createBase(Model model){
-        model.addAttribute("createbase", dataSelect.getResult());
-        return "createbase";
-    }
+
 
     @RequestMapping("/innerjoin")
     public String selectWithInnerJoin(Model model){

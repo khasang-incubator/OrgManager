@@ -6,6 +6,7 @@ import io.khasang.orgmanager.model.SecureAccess;
 import io.khasang.orgmanager.model.SuperSecureAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -14,6 +15,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
 @PropertySource("classpath:util.properties")
+@ComponentScan("io.khasang.orgmanager")
+
 public class AppContext {
     @Autowired
     Environment environment;
@@ -33,31 +36,4 @@ public class AppContext {
         return new SuperSecureAccess();
     }
 
-    @Bean
-    public JdbcTemplate jdbcTemplate(){
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(dataSource());
-        return jdbcTemplate;
-    }
-
-    /*
-     * Инициализация DriverManagerDataSource
-     * @return Созданный DriverManagerDataSource
-     * @author Андрей Поляков
-     * @version 1.0
-     */
-    @Bean
-    public DriverManagerDataSource dataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
-        dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.postgresql.username"));
-        dataSource.setPassword(environment.getProperty("jdbc.postgresql.password"));
-        return dataSource;
-    }
-
-        @Bean
-    DataSelect dataSelect(){
-        return new DataSelect(jdbcTemplate());
-    }
 }

@@ -44,7 +44,7 @@ public class GenericDaoJpa<T> implements GenericDao<T> {
     public void save(T object) {
         if(sessionFactory !=null)
         getSession().persist(object);
-        else System.out.println("null-------------------------------------------------");
+        else System.out.println("autowire failed");
     }
 
     @Override

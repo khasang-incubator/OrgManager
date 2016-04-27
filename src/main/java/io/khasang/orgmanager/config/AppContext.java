@@ -1,9 +1,6 @@
 package io.khasang.orgmanager.config;
 
-import io.khasang.orgmanager.model.DataSelect;
-import io.khasang.orgmanager.model.Hello;
-import io.khasang.orgmanager.model.SecureAccess;
-import io.khasang.orgmanager.model.SuperSecureAccess;
+import io.khasang.orgmanager.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,17 +16,17 @@ public class AppContext {
     Environment environment;
 
     @Bean
-    public Hello hello(){
+    public Hello hello() {
         return new Hello();
     }
 
     @Bean
-    public SecureAccess secureAccess(){
+    public SecureAccess secureAccess() {
         return new SecureAccess();
     }
 
     @Bean
-    public SuperSecureAccess superSecureAccess(){
+    public SuperSecureAccess superSecureAccess() {
         return new SuperSecureAccess();
     }
 
@@ -56,8 +53,13 @@ public class AppContext {
         return dataSource;
     }
 
-        @Bean
+    @Bean
     DataSelect dataSelect(){
         return new DataSelect(jdbcTemplate());
+    }
+
+	@Bean
+    DataClear dataClear() {
+        return new DataClear(jdbcTemplate());
     }
 }

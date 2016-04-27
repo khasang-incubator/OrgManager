@@ -1,6 +1,7 @@
-package io.khasang.orgmanager.dao;
+package io.khasang.orgmanager.dao.impl;
 
 
+import io.khasang.orgmanager.dao.GenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

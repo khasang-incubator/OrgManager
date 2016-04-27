@@ -17,11 +17,9 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class DataSelect {
+public class Backup {
     @Autowired
     Environment environment;
-    private JdbcTemplate jdbcTemplate;
-    private String result;
 
  /**
      * @autor Radiofisik
@@ -64,9 +62,5 @@ public class DataSelect {
             return "error happened"+ie.getMessage();
         }
     }
-	
 
-    public List<String[]> getSelectResult(){
-        return null;
-    }
 }

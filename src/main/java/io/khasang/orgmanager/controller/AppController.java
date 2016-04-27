@@ -1,7 +1,8 @@
 package io.khasang.orgmanager.controller;
 
+import io.khasang.orgmanager.dao.GenericDao;
 import io.khasang.orgmanager.dao.UserDao;
-import io.khasang.orgmanager.model.DataSelect;
+import io.khasang.orgmanager.model.Backup;
 import io.khasang.orgmanager.model.Entities.User;
 import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.SecureAccess;
@@ -16,20 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
-    @Autowired
-    Hello hello;
+
     @Autowired
     SecureAccess secureAccess;
     @Autowired
     SuperSecureAccess superSecureAccess;
     @Autowired
-    DataSelect dataSelect;
+    Backup backup;
     @Autowired
-    UserDao userDao;
+    GenericDao<User> userDao;
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("index", hello.getHello());
         return "index";
     }
 
@@ -50,25 +49,22 @@ public class AppController {
      */
     @RequestMapping("/backup")
     public String backup(Model model) {
-        model.addAttribute("result", dataSelect.makeBackup());
+        model.addAttribute("result", backup.makeBackup());
         return "backup";
     }
 
     @RequestMapping("/news")
     public String news(Model model) {
-        model.addAttribute("index", hello.getHello());
         return "news";
     }
 
     @RequestMapping("/contacts")
     public String contacts(Model model) {
-        model.addAttribute("index", hello.getHello());
         return "contacts";
     }
 
     @RequestMapping("/requisites")
     public String requisites(Model model) {
-        model.addAttribute("index", hello.getHello());
         return "requisites";
     }
 
@@ -95,11 +91,4 @@ public class AppController {
         return "supersecure";
     }
 
-
-
-    @RequestMapping("/innerjoin")
-    public String selectWithInnerJoin(Model model){
-        model.addAttribute("tableResult", dataSelect.getSelectResult());
-        return "innerjoin";
-    }
 }

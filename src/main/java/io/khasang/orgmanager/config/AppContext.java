@@ -1,6 +1,5 @@
 package io.khasang.orgmanager.config;
 
-import io.khasang.orgmanager.model.DataSelect;
 import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.SecureAccess;
 import io.khasang.orgmanager.model.SuperSecureAccess;
@@ -10,8 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
 @PropertySource("classpath:util.properties")

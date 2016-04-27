@@ -43,12 +43,22 @@ public class AppController {
         return "createbase";
     }
 
+    /**
+     * removes the last row of the table
+     * @author Serega Bobrus
+     * @version 1.0
+     */
     @RequestMapping("/deletelastdata")
     public String deleteLastData(Model model) {
         model.addAttribute("status", dataClear.getResultDeleteLastData());
         return "cleardata";
     }
 
+    /**
+     * deletes the data in time interval
+     * @author Serega Bobrus
+     * @version 1.0
+     */
     @RequestMapping("/deleteperioddata")
     public String deletePeriodDate(Model model) {
         model.addAttribute("status", dataClear.getResultDeletePeriodDate());

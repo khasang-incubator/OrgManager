@@ -9,8 +9,9 @@ public class Worker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private Integer contrAgentId;
+    @ManyToOne
+    @JoinColumn(name = "contrAgentId")
+    private ContrAgent contrAgent;
 
     @Column
     private String firstName;
@@ -36,12 +37,12 @@ public class Worker {
         this.id = id;
     }
 
-    public Integer getContrAgentId() {
-        return contrAgentId;
+    public ContrAgent getContrAgent() {
+        return contrAgent;
     }
 
-    public void setContrAgentId(Integer contrAgentId) {
-        this.contrAgentId = contrAgentId;
+    public void setContrAgent(ContrAgent contrAgent) {
+        this.contrAgent = contrAgent;
     }
 
     public String getFirstName() {

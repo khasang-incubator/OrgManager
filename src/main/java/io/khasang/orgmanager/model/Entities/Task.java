@@ -5,6 +5,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Tasks")
@@ -16,14 +19,20 @@ public class Task {
     @Column
     private boolean isDone;
 
-    @Column
-    private Integer executorId;
+    @ManyToOne
+    @JoinColumn(name = "executorID")
+    private User executor;
 
-    @Column
-    private Integer creatorId;
+    @ManyToOne
+    @JoinColumn(name = "creatorID")
+    private User creator;
 
-    @Column
-    private Integer parentTaskId;
+    @ManyToOne
+    @JoinColumn(name = "parentTaskId")
+    private Task parentTask;
+
+    @OneToMany(mappedBy = "parentTask")
+    public Set<Task> childTasks= new HashSet<>();
 
     @Column
     @Type(type="timestamp")
@@ -33,7 +42,7 @@ public class Task {
     @Type(type="timestamp")
     private Date deadLine;
 
-    @Column
+    @Column(name = "name", unique = false, nullable = false, length = 1000)
     private String name;
 
     @Column
@@ -43,9 +52,42 @@ public class Task {
     @Column
     private Integer priority;
 
+    public Set<Task> getChildTasks() {
+        return childTasks;
+    }
+
+    public void setChildTasks(Set<Task> childTasks) {
+        this.childTasks = childTasks;
+    }
+
     public Integer getId() {
         return id;
     }
+
+    public User getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(User executor) {
+        this.executor = executor;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Task getParentTask() {
+        return parentTask;
+    }
+
+    public void setParentTask(Task parentTask) {
+        this.parentTask = parentTask;
+    }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -57,30 +99,6 @@ public class Task {
 
     public void setDone(boolean done) {
         isDone = done;
-    }
-
-    public Integer getExecutorId() {
-        return executorId;
-    }
-
-    public void setExecutorId(Integer executorId) {
-        this.executorId = executorId;
-    }
-
-    public Integer getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
-    }
-
-    public Integer getParentTaskId() {
-        return parentTaskId;
-    }
-
-    public void setParentTaskId(Integer parentTaskId) {
-        this.parentTaskId = parentTaskId;
     }
 
     public Date getCreateDate() {

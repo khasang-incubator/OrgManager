@@ -16,10 +16,17 @@ public class User {
     @Column
     private String password;
 
-    @Column
-    private Integer roleId;
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
 
+    public Role getRole() {
+        return role;
+    }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;

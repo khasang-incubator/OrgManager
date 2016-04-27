@@ -32,15 +32,15 @@ public class GenericDaoImpl <T> implements GenericDao<T> {
 
     @Transactional(readOnly = true)
     public List<T> getAll() {
-        return null;
+        return getSession().createCriteria(type).list();
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
     public void save(T object) {
         getSession().persist(object);
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
     public void delete(T object) {
         getSession().delete(object);
     }

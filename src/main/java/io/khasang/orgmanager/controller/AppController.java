@@ -29,8 +29,6 @@ public class AppController {
     @Autowired
     GenericDao<User> userDao;
     @Autowired
-    GenericDao<ContrAgent> contrAgentDao;
-    @Autowired
     GenericDao<News> newsDao;
 
     @RequestMapping("/")
@@ -71,6 +69,10 @@ public class AppController {
     public String backup(Model model) {
         model.addAttribute("result", backup.makeBackup());
         return "backup";
+    }
+    @RequestMapping("/tile")
+    public String testTiles(){
+        return "testtile";
     }
 
     @RequestMapping("/news")

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base.definition" template="/WEB-INF/layout/layout.jsp">
+        <put-attribute name="title" value="OrgManager"></put-attribute>
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
+    </definition>
+
+    <definition name="index" extends="base.definition">
+        <put-attribute name="title" value="Главная страница"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/indexbody.jsp"/>
+    </definition>
+
+    <definition name="news" extends="base.definition">
+        <put-attribute name="title" value="Новости"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/newsbody.jsp"/>
+    </definition>
+
+    <definition name="contacts" extends="base.definition">
+        <put-attribute name="title" value="Контакты"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/contactsbody.jsp"/>
+    </definition>
+
+    <definition name="requisites" extends="base.definition">
+        <put-attribute name="title" value="Реквизиты"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/requisitesbody.jsp"/>
+    </definition>
+
+    <definition name="backup" extends="base.definition">
+        <put-attribute name="title" value="Результаты"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/backupbody.jsp"/>
+    </definition>
+
+    <definition name="login" extends="base.definition">
+        <put-attribute name="title" value="Результаты"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/loginbody.jsp"/>
+    </definition>
+
+</tiles-definitions>

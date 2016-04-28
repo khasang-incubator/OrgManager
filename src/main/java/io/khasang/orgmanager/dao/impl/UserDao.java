@@ -5,8 +5,8 @@ import io.khasang.orgmanager.model.Entities.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImpl extends GenericDaoImpl<User>  {
-    public UserDaoImpl() {
+public class UserDao extends GenericDaoImpl<User>  {
+    public UserDao() {
         super(User.class);
     }
 }

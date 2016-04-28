@@ -1,10 +1,8 @@
 package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.GenericDao;
-import io.khasang.orgmanager.dao.UserDao;
 import io.khasang.orgmanager.model.Backup;
 import io.khasang.orgmanager.model.Entities.User;
-import io.khasang.orgmanager.model.Hello;
 import io.khasang.orgmanager.model.SecureAccess;
 import io.khasang.orgmanager.model.SuperSecureAccess;
 import org.springframework.beans.factory.annotation.Autowired;

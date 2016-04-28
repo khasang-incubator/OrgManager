@@ -23,6 +23,10 @@ public class News {
     @Type(type="text")
     private String description;
 
+    @Column
+    @Type(type="text")
+    private String fullText;
+
     public Integer getId() {
         return id;
     }

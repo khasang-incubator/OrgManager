@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.Role;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author radiofisik
  */
-public class RoleDao {
+@Repository
+public class RoleDao extends GenericDaoImpl<Role> {
+    public RoleDao() {
+        super(Role.class);
+    }
 }

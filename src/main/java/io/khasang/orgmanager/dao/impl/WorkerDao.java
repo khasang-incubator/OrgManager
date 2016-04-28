@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.Worker;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author radiofisik
  */
-public class WorkerDao {
+@Repository
+public class WorkerDao extends GenericDaoImpl<Worker> {
+    public WorkerDao() {
+        super(Worker.class);
+    }
 }

@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.ContrAgent;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author  radiofisik
  */
-public class ContrAgentDao {
+@Repository
+public class ContrAgentDao extends GenericDaoImpl<ContrAgent> {
+    public ContrAgentDao() {
+        super(ContrAgent.class);
+    }
 }

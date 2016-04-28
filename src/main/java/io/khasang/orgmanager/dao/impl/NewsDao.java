@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.News;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author radiofisik
  */
-public class NewsDao {
+@Repository
+public class NewsDao extends GenericDaoImpl<News> {
+    public NewsDao() {
+        super(News.class);
+    }
 }

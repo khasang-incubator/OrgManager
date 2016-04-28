@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.Requisite;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author radiofisik
  */
-public class RequisiteDao {
+@Repository
+public class RequisiteDao extends GenericDaoImpl<Requisite> {
+    public RequisiteDao() {
+        super(Requisite.class);
+    }
 }

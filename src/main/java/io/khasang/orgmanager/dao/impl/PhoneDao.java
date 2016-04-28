@@ -1,7 +1,14 @@
 package io.khasang.orgmanager.dao.impl;
 
+import io.khasang.orgmanager.model.Entities.Phone;
+import org.springframework.stereotype.Repository;
+
 /**
- * Created by radiofisik on 28.04.2016.
+ * @author radiofisik
  */
-public class PhoneDao {
+@Repository
+public class PhoneDao extends GenericDaoImpl<Phone> {
+    public PhoneDao() {
+        super(Phone.class);
+    }
 }

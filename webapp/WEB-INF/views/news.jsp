@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Администратор
-  Date: 11.04.2016
-  Time: 21:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -54,37 +48,15 @@
   </header>
 
   <div id="container" class="container">
+  <c:forEach items="${news}" var="wholenews">
     <div class="col col-lg-2 block"></div>
     <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
+      <h4><c:out value="${wholenews.name} " ></c:out></h4>
+      <p><c:out value="${wholenews.description} " ></c:out></p>
       <a href="#">Подробнее</a>
     </div>
     <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
-
-    <div class="col col-lg-2 block"></div>
-    <div class="col col-lg-8 news">
-      <h4>Заголовок новости</h4>
-      <p>Текст новости Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости< Текст новости<</p>
-      <a href="#">Подробнее</a>
-    </div>
-    <div class="col col-lg-2"></div>
+  </c:forEach>
   </div>
 
   <footer>

@@ -31,6 +31,14 @@ public class News {
         return id;
     }
 
+    public String getFullText() {
+        return fullText;
+    }
+
+    public void setFullText(String fullText) {
+        this.fullText = fullText;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

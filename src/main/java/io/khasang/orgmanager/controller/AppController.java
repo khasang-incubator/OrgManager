@@ -92,15 +92,20 @@ public class AppController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getLoginForm(@RequestParam(required=false) String authFailed, String logout) {
-        String message="";
-        if(authFailed != null) {
-            message = "Invalid username or password, try again !";
-        } else if (logout != null) {
-            message = "Logged Out successfully, login again to continue!";
+    public ModelAndView login(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", "Invalid username and password!");
         }
-        return new ModelAndView("login", "message", message);
+        if (logout != null) {
+            model.addObject("msg", "You've been logged out successfully.");
+        }
+        model.setViewName("login");
+        return model;
     }
+
 
     @RequestMapping("/secure")
     public String secure(Model model) {

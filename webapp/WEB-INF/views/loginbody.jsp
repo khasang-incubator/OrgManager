@@ -1,18 +1,25 @@
-﻿
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="container">
 
-        <form class="form-signin">
+        <c:choose>
+        <c:when test="${not empty error}">
+            <div class="error">${error}</div>
+        </c:when>
+        <c:otherwise>
             <h2 class="form-signin-heading">Добро пожаловать!</h2>
-            <label for="inputEmail" class="sr-only">Login:</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
+        </c:otherwise>
+        </c:choose>
+        <c:if test="${not empty msg}">
+            <div class="msg">${msg}</div>
+        </c:if>
+
+       <form class="form-signin"  name='f' action="<c:url value='/j_spring_security_check'/>" method='POST'>
+            <label for="login" class="sr-only">Login:</label>
+            <input type="text" id="login" name="username" class="form-control" placeholder="Login" required autofocus>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password"  name="password" class="form-control" placeholder="Password" required>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button class="btn btn-md btn-success btn-block" type="submit">Sign in!</button>
         </form>
-
-    </div> <!-- /container -->
+    </div>
+<!-- /container -->

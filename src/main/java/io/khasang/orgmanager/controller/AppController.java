@@ -4,6 +4,7 @@ import io.khasang.orgmanager.dao.GenericDao;
 import io.khasang.orgmanager.model.Backup;
 import io.khasang.orgmanager.model.Entities.ContrAgent;
 import io.khasang.orgmanager.model.Entities.News;
+import io.khasang.orgmanager.model.Entities.Requisite;
 import io.khasang.orgmanager.model.Entities.User;
 import io.khasang.orgmanager.model.SecureAccess;
 import io.khasang.orgmanager.model.SuperSecureAccess;
@@ -29,18 +30,14 @@ public class AppController {
     GenericDao<User> userDao;
     @Autowired
     GenericDao<News> newsDao;
+    @Autowired
+    GenericDao<ContrAgent> contrAgentDao;
+    @Autowired
+    GenericDao<Requisite> requisitDao;
 
     @RequestMapping("/")
     public String index(Model model) {
         return "index";
-    }
-
-
-
-
-    @RequestMapping("/tile")
-    public String testTiles(){
-        return "testtile";
     }
 
     @RequestMapping("/news")
@@ -51,12 +48,14 @@ public class AppController {
 
     @RequestMapping("/contacts")
     public String contacts(Model model) {
+        model.addAttribute("contacts",requisitDao.getAll());
         return "contacts";
     }
 
-    @RequestMapping("/requisites")
+    @RequestMapping("/reference")
     public String requisites(Model model) {
-        return "requisites";
+        model.addAttribute("references",contrAgentDao.getAll());
+        return "reference";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -73,18 +72,4 @@ public class AppController {
         model.setViewName("login");
         return model;
     }
-
-
-    @RequestMapping("/secure")
-    public String secure(Model model) {
-        model.addAttribute("secure", secureAccess.info());
-        return "secure";
-    }
-
-    @RequestMapping("/supersecure")
-    public String superSecure(Model model) {
-        model.addAttribute("supersecure", superSecureAccess.info());
-        return "supersecure";
-    }
-
 }

@@ -19,4 +19,9 @@
         <put-attribute name="body" value="/WEB-INF/views/adminusersbody.jsp"/>
     </definition>
 
+    <definition name="backup" extends="base.admindefinition">
+        <put-attribute name="title" value="Результаты"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/backupbody.jsp"/>
+    </definition>
+
 </tiles-definitions>

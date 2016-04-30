@@ -24,14 +24,9 @@
         <put-attribute name="body" value="/WEB-INF/views/contactsbody.jsp"/>
     </definition>
 
-    <definition name="requisites" extends="base.definition">
-        <put-attribute name="title" value="Реквизиты"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/requisitesbody.jsp"/>
-    </definition>
-
-    <definition name="backup" extends="base.definition">
-        <put-attribute name="title" value="Результаты"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/backupbody.jsp"/>
+    <definition name="reference" extends="base.definition">
+        <put-attribute name="title" value="Справочник"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/referencebody.jsp"/>
     </definition>
 
     <definition name="login" extends="base.definition">

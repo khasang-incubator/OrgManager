@@ -33,6 +33,19 @@ public class TestBdController {
         return "backup";
     }
 
+    @RequestMapping("/createadmin")
+    public  String createadmin(Model model){
+        User user=new User();
+        user.setName("admin");
+        user.setPassword("password");
+        Role role=new Role();
+        role.setName("ADMIN");
+        user.setRole(role);
+        userDao.save(user);
+        model.addAttribute("result","It seems to be ok");
+        return "backup";
+    }
+
     @RequestMapping("/createnews")
     public  String createnews(Model model){
         News news=new News();

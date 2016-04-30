@@ -4,6 +4,7 @@ package io.khasang.orgmanager.dao.impl;
 import io.khasang.orgmanager.dao.GenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,8 +28,10 @@ public class GenericDaoImpl <T> implements GenericDao<T> {
     }
 
     @Transactional(readOnly = true)
-    public T get(Long id) {
-        return null;
+    public T get(Integer id) {
+        return (T) getSession().createCriteria(type).
+                add( Restrictions.idEq(id) ).
+                uniqueResult();
     }
 
     @Transactional(readOnly = true)

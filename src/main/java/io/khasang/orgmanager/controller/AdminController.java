@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Calendar;
 
@@ -29,6 +31,18 @@ public class AdminController {
     @RequestMapping("/adminusers")
     public String adminusers(Model model){
         model.addAttribute("items",userDao.getAll());
+        return "adminusers";
+    }
+
+    @RequestMapping(value="/user/change", method = RequestMethod.GET)
+    public String changeUser(Model model, @RequestParam("id") Integer id){
+        User user=userDao.get(id);
+        model.addAttribute("item",user);
+        return "changeuser";
+    }
+
+    @RequestMapping("/user/delete")
+    public String  deleteUser(Model model){
         return "adminusers";
     }
 

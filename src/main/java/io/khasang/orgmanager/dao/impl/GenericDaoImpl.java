@@ -16,7 +16,7 @@ public class GenericDaoImpl <T> implements GenericDao<T> {
 
     private Class<T> type;
 
-    private Session getSession() {
+    protected Session getSession() {
         if(sessionFactory!=null)
         return sessionFactory.getCurrentSession();
         else throw new NullPointerException("autowire failed");

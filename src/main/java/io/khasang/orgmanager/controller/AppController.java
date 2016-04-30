@@ -36,29 +36,7 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/createuser")
-    public  String createuser(Model model){
-        User user=new User();
-        user.setName("admin");
-        user.setPassword("somehash");
-        userDao.save(user);
-        model.addAttribute("result","It seems to be ok");
-        return "backup";
-    }
 
-    @RequestMapping("/createnews")
-    public  String createnews(Model model){
-        News news=new News();
-        news.setName("Заголовок новости");
-        news.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante dolor, ultrices et eleifend sit amet, aliquet ac turpis. Aliquam accumsan dictum sapien. Nullam viverra tristique arcu, at dignissim turpis. Aenean gravida ligula ut enim vestibulum laoreet. Phasellus dolor arcu, rhoncus sed nisi a, condimentum suscipit augue. Fusce quis euismod augue. Sed cursus orci quis lectus pla");
-        news.setFullText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante dolor, ultrices et eleifend sit amet, aliquet ac turpis. Aliquam accumsan dictum sapien. Nullam viverra tristique arcu, at dignissim turpis. Aenean gravida ligula ut enim vestibulum laoreet. Phasellus dolor arcu, rhoncus sed nisi a, condimentum suscipit augue. Fusce quis euismod augue. Sed cursus orci quis lectus plaLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante dolor, ultrices et eleifend sit amet, aliquet ac turpis. Aliquam accumsan dictum sapien. Nullam viverra tristique arcu, at dignissim turpis. Aenean gravida ligula ut enim vestibulum laoreet. Phasellus dolor arcu, rhoncus sed nisi a, condimentum suscipit augue. Fusce quis euismod augue. Sed cursus orci quis lectus pla");
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        news.setCreated(today.getTime());
-        newsDao.save(news);
-        model.addAttribute("result","It seems to be ok");
-        return "backup";
-    }
 
     /**
      * @author Radiofisik

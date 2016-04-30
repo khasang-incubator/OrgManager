@@ -21,6 +21,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /*  @Autowired
     //it was left here for testing. if you want the programm not rely to database authentication comment the implementation bellow (customUserDetailsService)
+    //this code uses roles rest of the programm use authorities so this code need to be changed to support rest of this app
       public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
           auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
           auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");

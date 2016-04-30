@@ -1,6 +1,5 @@
 package io.khasang.orgmanager.config;
 
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import java.util.Properties;
 public class HibernateConfig {
     @Autowired
     private Environment environment;
-
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {

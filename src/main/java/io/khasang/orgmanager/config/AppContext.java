@@ -14,5 +14,4 @@ import org.springframework.core.env.Environment;
 public class AppContext {
     @Autowired
     Environment environment;
-
 }

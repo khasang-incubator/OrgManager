@@ -18,13 +18,17 @@ public class AdminController {
     @Autowired
     Backup backup;
 
+    @Autowired
+    IUserDao userDao;
+
     @RequestMapping("/admintasks")
     public String admintasks(){
         return "admintasks";
     }
 
     @RequestMapping("/adminusers")
-    public String adminusers(){
+    public String adminusers(Model model){
+        model.addAttribute("items",userDao.getAll());
         return "adminusers";
     }
 

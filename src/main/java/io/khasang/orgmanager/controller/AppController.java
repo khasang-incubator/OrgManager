@@ -24,8 +24,7 @@ public class AppController {
     SecureAccess secureAccess;
     @Autowired
     SuperSecureAccess superSecureAccess;
-    @Autowired
-    Backup backup;
+
     @Autowired
     GenericDao<User> userDao;
     @Autowired
@@ -38,16 +37,7 @@ public class AppController {
 
 
 
-    /**
-     * @author Radiofisik
-     * @version 1.0
-     * makes backup of database to file. the name of the file can be found in properties file
-     */
-    @RequestMapping("/backup")
-    public String backup(Model model) {
-        model.addAttribute("result", backup.makeBackup());
-        return "backup";
-    }
+
     @RequestMapping("/tile")
     public String testTiles(){
         return "testtile";

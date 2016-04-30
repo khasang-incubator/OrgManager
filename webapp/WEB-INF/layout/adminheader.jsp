@@ -17,23 +17,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="menu-item"><a href="<c:url value='/news'/>">Новости<span class="sr-only">(current)</span></a></li>
-                    <sec:authorize access="hasRole('USER')">
-                        <li class="menu-item"><a href="<c:url value='/requisites'/>">Справочник</a></li>
-                    </sec:authorize>
-                    <li class="menu-item"><a href="<c:url value='/contacts'/>">Контакты</a></li>
+                    <li class="menu-item"><a href="<c:url value='/admintasks'/>">Задачи администрирования<span class="sr-only">(current)</span></a></li>
+                    <li class="menu-item"><a href="<c:url value='/adminusers'/>">Добавление пользователей</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <sec:authorize access="hasRole('ADMIN')">
-                        <li class="menu-item"><a href="<c:url value='/admintasks'/>">Панель администратора</a></li>
-                    </sec:authorize>
-                    <sec:authorize access="isAnonymous()">
-                    <li class="menu-item"><a href="<c:url value='/login'/>">Войти</a></li>
-                    </sec:authorize>
-                    <sec:authorize access="isAuthenticated()">
-                        <li class="menu-item"><a href="<c:url value='/login'/>">Выйти</a></li>
-                    </sec:authorize>
-                </ul>
+
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
     </nav>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base.admindefinition" template="/WEB-INF/layout/layout.jsp">
+        <put-attribute name="title" value="OrgManager"></put-attribute>
+        <put-attribute name="header" value="/WEB-INF/layout/adminheader.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
+    </definition>
+
+    <definition name="admintasks" extends="base.admindefinition">
+        <put-attribute name="title" value="задачи администрирования"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/admintasksbody.jsp"/>
+    </definition>
+
+    <definition name="adminusers" extends="base.admindefinition">
+        <put-attribute name="title" value="Управление пользователями"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/adminusersbody.jsp"/>
+    </definition>
+
+</tiles-definitions>

@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="menu-item"><a href="<c:url value='/news'/>">Новости<span class="sr-only">(current)</span></a></li>
-                    <sec:authorize access="hasAuthority('USER')">
+                    <sec:authorize access="hasAuthority('USER') ">
                         <li class="menu-item"><a href="<c:url value='/reference'/>">Справочник</a></li>
                     </sec:authorize>
                     <li class="menu-item"><a href="<c:url value='/contacts'/>">Контакты</a></li>

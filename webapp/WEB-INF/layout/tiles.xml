@@ -34,9 +34,4 @@
         <put-attribute name="body" value="/WEB-INF/views/loginbody.jsp"/>
     </definition>
 
-    <definition name="secure" extends="base.definition">
-        <put-attribute name="title" value="securepage"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/securebody.jsp"/>
-    </definition>
-
 </tiles-definitions>

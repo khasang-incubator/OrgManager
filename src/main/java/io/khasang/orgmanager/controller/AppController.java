@@ -6,8 +6,6 @@ import io.khasang.orgmanager.model.Entities.ContrAgent;
 import io.khasang.orgmanager.model.Entities.News;
 import io.khasang.orgmanager.model.Entities.Requisite;
 import io.khasang.orgmanager.model.Entities.User;
-import io.khasang.orgmanager.model.SecureAccess;
-import io.khasang.orgmanager.model.SuperSecureAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +18,6 @@ import java.util.Calendar;
 
 @Controller
 public class AppController {
-
-    @Autowired
-    SecureAccess secureAccess;
-    @Autowired
-    SuperSecureAccess superSecureAccess;
-
     @Autowired
     GenericDao<User> userDao;
     @Autowired

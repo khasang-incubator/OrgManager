@@ -15,7 +15,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
-@ComponentScan("io.khasang.orgmanager")
+@ComponentScan()
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -38,8 +38,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/secure/**").access("hasRole('USER')")
-                .antMatchers("/supersecure/**").access("hasRole('ADMIN')")
+                .antMatchers("/reference/**").access("hasAuthority('USER')")
+                .antMatchers("/admintasks/**").access("hasAuthority('ADMIN')")
+                .antMatchers("/adminusers/**").access("hasAuthority('ADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false)
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")

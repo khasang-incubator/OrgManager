@@ -2,6 +2,7 @@ package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.IUserDao;
 import io.khasang.orgmanager.model.Backup;
+import io.khasang.orgmanager.model.Entities.Role;
 import io.khasang.orgmanager.model.Entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

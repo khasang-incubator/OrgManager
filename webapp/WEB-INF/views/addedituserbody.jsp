@@ -10,8 +10,14 @@
         <input name="name" type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
         <label for="inputPassword">Password</label>
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <input name="role" type="text" value="${item.role.name}" class="form-control"/>
-        <div class="dropdown">
+        <select  name="role" value="${item.role.name}" class="form-control">
+            <option>USER</option>
+            <option>MANAGER</option>
+            <option>ADMIN</option>
+        </select>
+
+
+      <!--  <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuRoles" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Roles:
                 <span class="caret"></span>
@@ -21,7 +27,7 @@
                 <li><a href="#">MANAGER</a></li>
                 <li><a href="#">ADMIN</a></li>
             </ul>
-        </div>
+        </div>-->
         <button class="btn btn-md btn-success btn-block" type="submit">Сохранить</button>
     </form>
 </div>

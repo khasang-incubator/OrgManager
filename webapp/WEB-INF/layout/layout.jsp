@@ -24,7 +24,7 @@
     <![endif]-->
     <script src="/js/jquery-1.12.3.min.js"></script>
     <script src="/js/moment-with-locales.min.js"></script>
-    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap-slider.min.js"></script>
 </head>

@@ -16,9 +16,9 @@
 
         <sec:authorize access="isAnonymous()">
        <form class="form-signin"  name='f' action="<c:url value='/j_spring_security_check'/>" method='POST'>
-            <label for="login" class="sr-only">Login:</label>
+            <label for="login">Login:</label>
             <input type="text" id="login" name="username" class="form-control" placeholder="Login" required autofocus>
-            <label for="password" class="sr-only">Password</label>
+            <label for="password">Password</label>
             <input type="password" id="password"  name="password" class="form-control" placeholder="Password" required>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button class="btn btn-md btn-success btn-block" type="submit">Войти</button>

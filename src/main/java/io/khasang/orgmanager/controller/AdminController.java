@@ -41,6 +41,16 @@ public class AdminController {
         return "changeuser";
     }
 
+    @RequestMapping(value="/user/save", method = RequestMethod.POST)
+    public String saveUser(Model model, @RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("role") String role){
+        User user=userDao.get(id);
+        user.getRole().setName(role);
+        user.setName(name);
+        userDao.save(user);
+        model.addAttribute("item",user);
+        return "changeuser";
+    }
+
     @RequestMapping("/user/delete")
     public String  deleteUser(Model model){
         return "adminusers";

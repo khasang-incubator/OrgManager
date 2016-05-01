@@ -41,7 +41,7 @@ public class GenericDaoImpl <T> implements GenericDao<T> {
 
     @Transactional
     public void save(T object) {
-        getSession().persist(object);
+        getSession().saveOrUpdate(object);
     }
 
     @Transactional

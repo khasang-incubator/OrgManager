@@ -1,8 +1,8 @@
 package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.GenericDao;
+import io.khasang.orgmanager.dao.IRoleDao;
 import io.khasang.orgmanager.dao.IUserDao;
-import io.khasang.orgmanager.dao.impl.UserDao;
 import io.khasang.orgmanager.model.Entities.News;
 import io.khasang.orgmanager.model.Entities.Role;
 import io.khasang.orgmanager.model.Entities.User;
@@ -15,6 +15,8 @@ import java.util.Calendar;
 
 @Controller
 public class TestBdController {
+    @Autowired
+    IRoleDao roleDao;
     @Autowired
     IUserDao userDao;
     @Autowired

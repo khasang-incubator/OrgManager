@@ -1,12 +1,15 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--параметры адресной строки: parentID (null, если нет)--%>
+
 <div class="container">
     <form class="form-signin">
         <h2 class="form-signin-heading">Add task</h2>
         <label for="title">Title:</label>
-        <input type="text" id="title" class="form-control" placeholder="Title" required autofocus>
+        <input type="text" id="title" value="${item.name}" class="form-control" placeholder="Title" required autofocus>
         <label for="prioritySlider">Priority:</label>
         <p>
-        <input id="prioritySlider" data-slider-id='prioritySlider' type="text"
+        <input id="prioritySlider" data-slider-id='prioritySlider' value="${item.priority}" type="text"
                data-provide="slider"
                data-slider-ticks="[0, 3, 5]"
                data-slider-ticks-labels='["Low", "Medium", "High"]'
@@ -24,7 +27,7 @@
 
             <label for="startDate">Start Date:</label>
             <div class="input-group date" id="startDate">
-                <input data-format="dd/MM/yyyy hh:mm:ss" type="text" class="form-control"/>
+                <input data-format="dd/MM/yyyy hh:mm:ss" type="text" value="${item.createDate}" class="form-control"/>
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>
@@ -39,7 +42,7 @@
 
             <label for="endDate">End Date:</label>
             <div class="input-group date" id="endDate">
-                <input data-format="dd/MM/yyyy hh:mm:ss" type="text" class="form-control"/>
+                <input data-format="dd/MM/yyyy hh:mm:ss" type="text" value="${item.deadLine}" class="form-control"/>
                 <span class="input-group-addon">
                     <span class="glyphicon-calendar glyphicon"></span>
                 </span>
@@ -63,9 +66,9 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>${item.executor.id}</td>
+                <td>${item.executor.name}</td>
+                <td>${item.executor.role.name}</td>
             </tr>
         </table>
         <button class="btn btn-md btn-success btn-block" type="submit">Add</button>

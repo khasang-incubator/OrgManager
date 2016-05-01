@@ -34,6 +34,11 @@ public class AdminController {
         return "adminusers";
     }
 
+    @RequestMapping(value="/user/add")
+    public String changeUser(Model model){
+        return "changeuser";
+    }
+
     @RequestMapping(value="/user/change", method = RequestMethod.GET)
     public String changeUser(Model model, @RequestParam("id") Integer id){
         User user=userDao.get(id);
@@ -43,7 +48,15 @@ public class AdminController {
 
     @RequestMapping(value="/user/save", method = RequestMethod.POST)
     public String saveUser(Model model, @RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("role") String role){
-        User user=userDao.get(id);
+        User user;
+        if(id==null){
+            user=new User();
+            Role role1 =new Role();
+            user.setRole(role1);
+        }
+        else {
+            user=userDao.get(id);
+        }
         user.getRole().setName(role);
         user.setName(name);
         userDao.save(user);
@@ -51,8 +64,11 @@ public class AdminController {
         return "changeuser";
     }
 
-    @RequestMapping("/user/delete")
-    public String  deleteUser(Model model){
+    @RequestMapping(value = "/user/delete", method = RequestMethod.GET)
+    public String  deleteUser(Model model, @RequestParam("id") Integer id){
+        User user=userDao.get(id);
+        userDao.delete(user);
+        model.addAttribute("items",userDao.getAll());
         return "adminusers";
     }
 

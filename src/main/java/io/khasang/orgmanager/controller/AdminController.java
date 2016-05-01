@@ -1,10 +1,7 @@
 package io.khasang.orgmanager.controller;
 
-import io.khasang.orgmanager.dao.GenericDao;
 import io.khasang.orgmanager.dao.IUserDao;
 import io.khasang.orgmanager.model.Backup;
-import io.khasang.orgmanager.model.Entities.News;
-import io.khasang.orgmanager.model.Entities.Role;
 import io.khasang.orgmanager.model.Entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Calendar;
 
 @Controller
 public class AdminController {
@@ -35,9 +30,14 @@ public class AdminController {
     }
 
     @RequestMapping(value="/user/change", method = RequestMethod.GET)
-    public String changeUser(Model model, @RequestParam("id") Integer id){
-        User user=userDao.get(id);
-        model.addAttribute("item",user);
+    public String changeUser(Model model, @RequestParam(value = "id", required = false) Integer id) {
+        User user;
+        if (id != null) {
+            user = userDao.get(id);
+        } else{
+            user = new User();
+        }
+        model.addAttribute("item", user);
         return "changeuser";
     }
 

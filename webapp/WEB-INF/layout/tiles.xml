@@ -34,4 +34,19 @@
         <put-attribute name="body" value="/WEB-INF/views/loginbody.jsp"/>
     </definition>
 
+    <definition name="tasks" extends="base.definition">
+        <put-attribute name="title" value="Задачи"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/tasksbody.jsp"/>
+    </definition>
+
+    <definition name="addtask" extends="base.definition">
+        <put-attribute name="title" value="Добвить задачу"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/addedittaskbody.jsp"/>
+    </definition>
+
+    <definition name="changetask" extends="base.definition">
+        <put-attribute name="title" value="Изменить задачу"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/views/addedittaskbody.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -1,6 +1,7 @@
 package io.khasang.orgmanager.controller;
 
 import io.khasang.orgmanager.dao.GenericDao;
+import io.khasang.orgmanager.dao.ITaskDao;
 import io.khasang.orgmanager.dao.IUserDao;
 import io.khasang.orgmanager.dao.impl.TaskDao;
 import io.khasang.orgmanager.model.Entities.Role;
@@ -27,14 +28,16 @@ import java.util.Locale;
 public class TaskController {
 
     @Autowired
-    GenericDao<Task> taskDao;
+    ITaskDao taskDao;
 
     @Autowired
     IUserDao userDao;
 
     @RequestMapping("/tasks")
     public String allTasks(Model model) {
-        model.addAttribute("items", taskDao.getAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentuser = auth.getName(); //get logged in username
+        model.addAttribute("items", taskDao.getRelatedToUser(userDao.getUserByName(currentuser)));
         return "tasks";
     }
 

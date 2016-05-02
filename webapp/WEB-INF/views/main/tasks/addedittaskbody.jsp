@@ -77,7 +77,9 @@
         <button class="btn btn-md btn-success btn-block" type="submit">Сохранить</button>
     </form>
 </div>
-
+<script>
+    document.querySelector('#selectUser').value='${item.executor.name}';
+</script>
 <SCRIPT LANGUAGE="JavaScript">
     $(function () {
         $('#startDate').datetimepicker({

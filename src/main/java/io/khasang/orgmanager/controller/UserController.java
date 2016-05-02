@@ -23,6 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/admin/user/add")
     public String changeUser(Model model) {
+        model.addAttribute("users", userDao.getAll());
         model.addAttribute("title", "Создать пользователя");
         return "changeuser";
     }
@@ -33,11 +34,16 @@ public class UserController {
         user = userDao.get(id);
         model.addAttribute("title", "Редактировать пользователя");
         model.addAttribute("item", user);
+        model.addAttribute("users", userDao.getAll());
         return "changeuser";
     }
 
     @RequestMapping(value = "/admin/user/save", method = RequestMethod.POST)
-    public String saveUser(Model model, @RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("role") String role, @RequestParam("password") String password) {
+    public String saveUser(Model model, @RequestParam("id") Integer id,
+                           @RequestParam("name") String name,
+                           @RequestParam("role") String role,
+                           @RequestParam("manager") String managerName,
+                           @RequestParam("password") String password) {
         User user;
         if (id == null) {
             user = new User();
@@ -45,6 +51,11 @@ public class UserController {
             user.setRole(role1);
         } else {
             user = userDao.get(id);
+        }
+
+        if (!managerName.equals("")){
+            User manager=userDao.getUserByName(managerName);
+            user.setManager(manager);
         }
         user.setPassword(password);
         user.getRole().setName(role);

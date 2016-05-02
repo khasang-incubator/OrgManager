@@ -5,6 +5,7 @@
             <th>Имя задачи</th>
             <th>описание</th>
             <th>автор</th>
+            <th>исполнитель</th>
             <th>создана</th>
             <th>срок</th>
             <th></th>
@@ -17,6 +18,7 @@
                 <td><c:out value="${item.name}"/></td>
                 <td><c:out value="${item.description}"/></td>
                 <td><c:out value="${item.creator.name}"/></td>
+                <td><c:out value="${item.executor.name}"/></td>
                 <td><c:out value="${item.createDate}"/></td>
                 <td><c:out value="${item.deadLine}"/></td>
                 <td>

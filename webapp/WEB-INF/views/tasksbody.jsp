@@ -14,6 +14,7 @@
         <c:forEach items="${items}" var="item">
             <c:url var="editUrl" value="/tasks/change?id=${item.id}" />
             <c:url var="deleteUrl" value="/tasks/delete?id=${item.id}" />
+            <c:url var="subtaskUrl" value="/tasks/add?parentid=${item.id}" />
             <tr>
                 <td><c:out value="${item.name}"/></td>
                 <td><c:out value="${item.description}"/></td>
@@ -24,6 +25,7 @@
                 <td>
                     <button class="btn btn-default" onclick="window.location.href='${editUrl}'">Изменить</button>
                     <button class="btn btn-default" onclick="window.location.href='${deleteUrl}'">Удалить</button>
+                    <button class="btn btn-default" onclick="window.location.href='${subtaskUrl}'">Добавить подзадачу</button>
                 </td>
             </tr>
         </c:forEach>

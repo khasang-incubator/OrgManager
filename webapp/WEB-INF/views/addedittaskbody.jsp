@@ -5,6 +5,7 @@
 <div class="container">
     <form action="/tasks/save" method="post" class="form-signin">
         <input  name="id" type="text" value="${item.id}" hidden/>
+        <input  name="parentid" type="text" value="${parentid}" hidden/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <h2 class="form-signin-heading">${title}</h2>
         <label for="title">Задача:</label>

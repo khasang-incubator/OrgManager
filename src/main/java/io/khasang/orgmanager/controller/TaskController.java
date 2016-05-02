@@ -38,10 +38,11 @@ public class TaskController {
         return "tasks";
     }
 
-    @RequestMapping(value = "/tasks/add")
-    public String addTask(Model model) {
+    @RequestMapping(value = "/tasks/add", method = RequestMethod.GET)
+    public String addTask(Model model, @RequestParam(value = "parentid", required = false) Integer parentId) {
         model.addAttribute("title", "Создать задачу");
-        model.addAttribute("users",userDao.getAll());
+        model.addAttribute("parentid", parentId);
+        model.addAttribute("users", userDao.getAll());
         return "addtask";
     }
 
@@ -51,12 +52,13 @@ public class TaskController {
         task = taskDao.get(id);
         model.addAttribute("title", "Редактировать задачу");
         model.addAttribute("item", task);
-        model.addAttribute("users",userDao.getAll());
+        model.addAttribute("users", userDao.getAll());
         return "changetask";
     }
 
     @RequestMapping(value = "/tasks/save", method = RequestMethod.POST)
     public String saveTask(Model model, @RequestParam("id") Integer id,
+                           @RequestParam("parentid") Integer parentID,
                            @RequestParam("name") String name,
                            @RequestParam("description") String desription,
                            @RequestParam("priority") Integer priority,
@@ -69,6 +71,9 @@ public class TaskController {
             task = new Task();
         } else {
             task = taskDao.get(id);
+        }
+        if (parentID != null) {
+            task.setParentTask(taskDao.get(parentID));
         }
         task.setName(name);
         task.setDescription(desription);

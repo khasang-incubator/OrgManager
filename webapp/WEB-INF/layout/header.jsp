@@ -26,7 +26,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="hasAuthority('ADMIN')">
-                        <li class="menu-item"><a href="<c:url value='/admintasks'/>">Панель администратора</a></li>
+                        <li class="menu-item"><a href="<c:url value='/admin/tasks'/>">Панель администратора</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
                     <li class="menu-item"><a href="<c:url value='/login'/>">Войти</a></li>

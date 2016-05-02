@@ -11,17 +11,17 @@
 
     <definition name="admintasks" extends="base.admindefinition">
         <put-attribute name="title" value="задачи администрирования"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/admintasksbody.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/admintasksbody.jsp"/>
     </definition>
 
     <definition name="adminusers" extends="base.admindefinition">
         <put-attribute name="title" value="Управление пользователями"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/adminusersbody.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/users/adminusersbody.jsp"/>
     </definition>
 
     <definition name="changeuser" extends="base.admindefinition">
         <put-attribute name="title" value="Пользователь"></put-attribute>
-        <put-attribute name="body" value="/WEB-INF/views/addedituserbody.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/users/addedituserbody.jsp"/>
     </definition>
 
     <definition name="backup" extends="base.admindefinition">

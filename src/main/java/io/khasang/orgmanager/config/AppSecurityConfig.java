@@ -40,8 +40,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/reference/**").access("hasAuthority('USER')")
-                .antMatchers("/admintasks/**").access("hasAuthority('ADMIN')")
-                .antMatchers("/adminusers/**").access("hasAuthority('ADMIN')")
+                .antMatchers("/admin/**").access("hasAuthority('ADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false)
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")

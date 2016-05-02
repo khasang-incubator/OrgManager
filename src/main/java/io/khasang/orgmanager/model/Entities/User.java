@@ -2,6 +2,8 @@ package io.khasang.orgmanager.model.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -19,6 +21,30 @@ public class User {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "roleId")
     private Role role;
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "managerId")
+    private User manager;
+
+    //подчиненные
+    @OneToMany(mappedBy = "manager")
+    public Set<User> suborditates= new HashSet<>();
+
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
+    public Set<User> getSuborditates() {
+        return suborditates;
+    }
+
+    public void setSuborditates(Set<User> suborditates) {
+        this.suborditates = suborditates;
+    }
 
     public Role getRole() {
         return role;
@@ -51,6 +77,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }

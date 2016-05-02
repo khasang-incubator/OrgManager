@@ -16,67 +16,18 @@ public class AdminController {
     @Autowired
     Backup backup;
 
-    @Autowired
-    IUserDao userDao;
-
-    @RequestMapping("/admintasks")
+    @RequestMapping("/admin/tasks")
     public String admintasks() {
         return "admintasks";
     }
 
-    @RequestMapping("/adminusers")
-    public String adminusers(Model model) {
-        model.addAttribute("items", userDao.getAll());
-        return "adminusers";
-    }
-
-    @RequestMapping(value = "/user/add")
-    public String changeUser(Model model) {
-        model.addAttribute("title", "Создать пользователя");
-        return "changeuser";
-    }
-
-    @RequestMapping(value = "/user/change", method = RequestMethod.GET)
-    public String changeUser(Model model, @RequestParam(value = "id") Integer id) {
-        User user;
-        user = userDao.get(id);
-        model.addAttribute("title", "Редактировать пользователя");
-        model.addAttribute("item", user);
-        return "changeuser";
-    }
-
-    @RequestMapping(value = "/user/save", method = RequestMethod.POST)
-    public String saveUser(Model model, @RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("role") String role, @RequestParam("password") String password) {
-        User user;
-        if (id == null) {
-            user = new User();
-            Role role1 = new Role();
-            user.setRole(role1);
-        } else {
-            user = userDao.get(id);
-        }
-        user.setPassword(password);
-        user.getRole().setName(role);
-        user.setName(name);
-        userDao.save(user);
-        model.addAttribute("item", user);
-        return adminusers(model);
-    }
-
-    @RequestMapping(value = "/user/delete", method = RequestMethod.GET)
-    public String deleteUser(Model model, @RequestParam("id") Integer id) {
-        User user = userDao.get(id);
-        userDao.delete(user);
-        model.addAttribute("items", userDao.getAll());
-        return "adminusers";
-    }
 
     /**
      * @author Radiofisik
      * @version 1.0
      * makes backup of database to file. the name of the file can be found in properties file
      */
-    @RequestMapping("/backup")
+    @RequestMapping("/admin/backup")
     public String backup(Model model) {
         model.addAttribute("result", backup.makeBackup());
         return "backup";

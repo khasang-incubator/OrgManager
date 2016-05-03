@@ -2,6 +2,7 @@ package io.khasang.orgmanager.dao.impl;
 
 import io.khasang.orgmanager.dao.INewsDao;
 import io.khasang.orgmanager.model.Entities.News;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +26,8 @@ public class NewsDao extends GenericDaoImpl<News> implements INewsDao {
 
     @Override
     public int getAllNewsCount(){
-        return getSession().createCriteria(News.class).list().size();
+        return ((Number) getSession().createCriteria(News.class).setProjection(Projections.rowCount()).uniqueResult()).intValue();
+                //.list().size();
     }
 
     @Override

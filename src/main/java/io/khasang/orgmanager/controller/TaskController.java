@@ -67,7 +67,8 @@ public class TaskController {
                            @RequestParam("priority") Integer priority,
                            @RequestParam("startdate") String startdate,
                            @RequestParam("deadline") String deadline,
-                           @RequestParam("executor") String executor
+                           @RequestParam("executor") String executor,
+                           @RequestParam( value = "done", required = false) Boolean done
     ) {
         Task task;
         if (id == null) {
@@ -77,6 +78,13 @@ public class TaskController {
         }
         if (parentID != null) {
             task.setParentTask(taskDao.get(parentID));
+        }
+
+        if(done!=null && done!=false) {
+            task.setDone(true);
+        }
+        else {
+            task.setDone(false);
         }
         task.setName(name);
         task.setDescription(desription);

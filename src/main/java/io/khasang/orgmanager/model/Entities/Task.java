@@ -17,7 +17,7 @@ public class Task {
     private Integer id;
 
     @Column
-    private boolean isDone;
+    private Boolean done;
 
     @ManyToOne
     @JoinColumn(name = "executorID")
@@ -51,6 +51,18 @@ public class Task {
 
     @Column
     private Integer priority;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 
     public Set<Task> getChildTasks() {
         return childTasks;
@@ -86,19 +98,6 @@ public class Task {
 
     public void setParentTask(Task parentTask) {
         this.parentTask = parentTask;
-    }
-
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
     }
 
     public Date getCreateDate() {

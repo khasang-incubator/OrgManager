@@ -14,6 +14,12 @@
         <label for="description">Описание:</label>
         <input type="text" name="description" id="description" value="${item.description}" class="form-control" placeholder="Описание">
 
+        <label>Сделано:</label>
+        <input name="done" type="checkbox"
+        <c:if test="${item.done}">checked</c:if>
+        >
+        <br/> <br/>
+
         <label for="prioritySlider">Приоритет:</label>
         <p>
             <input name="priority" id="prioritySlider" data-slider-id='prioritySlider'  type="text"

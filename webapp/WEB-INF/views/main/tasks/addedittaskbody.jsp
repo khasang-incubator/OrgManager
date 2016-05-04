@@ -12,7 +12,7 @@
         <input name="name" type="text" id="title" value="${item.name}" class="form-control" placeholder="Название" required autofocus>
 
         <label for="description">Описание:</label>
-        <input type="text" name="description" id="description" value="${item.description}" class="form-control" placeholder="Описание">
+        <textarea name="description" id="description" class="form-control" placeholder="Описание">${item.description}</textarea>
 
         <label>Сделано:</label>
         <input name="done" type="checkbox"
@@ -24,10 +24,10 @@
         <p>
             <input name="priority" id="prioritySlider" data-slider-id='prioritySlider'  type="text"
                    data-provide="slider"
-                   data-slider-ticks="[0, 3, 5]"
+                   data-slider-ticks="[0, 3, 6]"
                    data-slider-ticks-labels='["Низкий", "Средний", "Высокий"]'
                    data-slider-min="0"
-                   data-slider-max="5"
+                   data-slider-max="6"
                    data-slider-step="1"
                    data-slider-value="${item.priority}"/>
         </p>

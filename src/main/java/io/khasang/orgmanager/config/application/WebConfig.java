@@ -44,7 +44,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
@@ -52,5 +51,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/views/css/");
         registry.addResourceHandler("/fonts/**").addResourceLocations("/WEB-INF/views/fonts/");
     }
-
 }

@@ -3,7 +3,7 @@
 <%--параметры адресной строки: parentID (null, если нет)--%>
 
 <div class="container">
-    <form action="/tasks/save" method="post" class="form-signin" accept-charset="UTF-8">
+    <form action="<c:url value="/tasks/save"/>" method="post" class="form-signin" accept-charset="UTF-8">
         <input  name="id" type="text" value="${item.id}" hidden/>
         <input  name="parentid" type="text" value="${parentid}" hidden/>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

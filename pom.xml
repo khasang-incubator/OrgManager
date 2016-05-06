@@ -182,6 +182,13 @@
             <artifactId>tiles-template</artifactId>
             <version>${tiles.version}</version>
         </dependency>
+
+        <!--json-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.3</version>
+        </dependency>
     </dependencies>
 
 

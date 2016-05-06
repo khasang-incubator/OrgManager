@@ -1,5 +1,7 @@
 package io.khasang.orgmanager.model.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +17,7 @@ public class Role {
     private String name;
 
     @OneToMany(mappedBy = "role")
+    @JsonIgnore
     public Set<User> users= new HashSet<>();
 
     public Set<User> getUsers() {

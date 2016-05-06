@@ -1,5 +1,7 @@
 package io.khasang.orgmanager.model.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -27,6 +29,7 @@ public class User {
     private User manager;
 
     //подчиненные
+    @JsonIgnore
     @OneToMany(mappedBy = "manager")
     public Set<User> suborditates= new HashSet<>();
 

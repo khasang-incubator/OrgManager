@@ -16,8 +16,7 @@
 
         <label>Сделано:</label>
         <input name="done" type="checkbox"
-        <c:if test="${item.done}">checked</c:if>
-        >
+        <c:if test="${item.done}">checked</c:if>/>
         <br/> <br/>
 
         <label for="prioritySlider">Приоритет:</label>
@@ -32,17 +31,6 @@
                    data-slider-value="${item.priority}"/>
         </p>
         <div>
-            <SCRIPT LANGUAGE="JavaScript">
-                $(function () {
-                    $('#startDate').datetimepicker({
-                        language: 'ru',
-                        minuteStepping: 10,
-                        defaultDate: new Date(),
-                        daysOfWeekDisabled: [0, 6]
-                    });
-                });
-            </SCRIPT>
-
             <label for="startDate">Поставлена:</label>
             <div class="input-group date" id="startDate">
                 <input name="startdate" data-format="dd/MM/yyyy hh:mm:ss" type="text" value="${item.createDate}" class="form-control"/>
@@ -53,17 +41,6 @@
         </div>
 
         <div>
-            <SCRIPT LANGUAGE="JavaScript">
-                $(function () {
-                    $('#endDate').datetimepicker({
-                        language: 'ru',
-                        minuteStepping: 10,
-                        defaultDate: new Date(),
-                        daysOfWeekDisabled: [0, 6]
-                    });
-                });
-            </SCRIPT>
-
             <label for="endDate">Срок:</label>
             <div class="input-group date" id="endDate">
                 <input name="deadline" data-format="dd/MM/yyyy hh:mm:ss" type="text" value="${item.deadLine}" class="form-control"/>
@@ -83,21 +60,24 @@
         <button class="btn btn-md btn-success btn-block" type="submit">Сохранить</button>
     </form>
 </div>
-<script>
+
+<script language="JavaScript">
     document.querySelector('#selectUser').value='${item.executor.name}';
-</script>
-<SCRIPT LANGUAGE="JavaScript">
+
     $(function () {
         $('#startDate').datetimepicker({
             language: 'ru',
             minuteStepping: 10,
-            defaultDate: "09.01.2015",
+            defaultDate: new Date(),
             daysOfWeekDisabled: [0, 6]
         });
+    });
+
+    $(function () {
         $('#endDate').datetimepicker({
             language: 'ru',
             minuteStepping: 10,
-            defaultDate: "09.01.2015",
+            defaultDate: new Date(),
             daysOfWeekDisabled: [0, 6]
         });
     });
@@ -107,4 +87,4 @@
             return 'Текущий приоритет: ' + value;
         }
     });
-</SCRIPT>
+</script>

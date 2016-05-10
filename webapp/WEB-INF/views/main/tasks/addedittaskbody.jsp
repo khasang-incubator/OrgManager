@@ -37,7 +37,7 @@
                     $('#startDate').datetimepicker({
                         language: 'ru',
                         minuteStepping: 10,
-                        defaultDate: "09.01.2015",
+                        defaultDate: new Date(),
                         daysOfWeekDisabled: [0, 6]
                     });
                 });
@@ -58,7 +58,7 @@
                     $('#endDate').datetimepicker({
                         language: 'ru',
                         minuteStepping: 10,
-                        defaultDate: "09.01.2015",
+                        defaultDate: new Date(),
                         daysOfWeekDisabled: [0, 6]
                     });
                 });

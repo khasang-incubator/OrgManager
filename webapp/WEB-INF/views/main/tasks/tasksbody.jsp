@@ -1,4 +1,5 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="inner cover">
     <table class="table">
         <tr>
@@ -20,8 +21,8 @@
                 <td><c:out value="${item.description}"/></td>
                 <td><c:out value="${item.creator.name}"/></td>
                 <td><c:out value="${item.executor.name}"/></td>
-                <td><c:out value="${item.createDate}"/></td>
-                <td><c:out value="${item.deadLine}"/></td>
+                <td><fmt:formatDate value="${item.createDate}" pattern="DD.MM.yyyy"/></td>
+                <td><fmt:formatDate value="${item.deadLine}" pattern="DD.MM.yyyy"/></td>
                 <td>
                     <button class="btn btn-default" onclick="window.location.href='${editUrl}'">Изменить</button>
                     <button class="btn btn-default" onclick="window.location.href='${deleteUrl}'">Удалить</button>
@@ -32,3 +33,4 @@
     </table>
     <button class="btn btn-default" onclick="window.location.href='${addUrl}'">Добавить задачу</button>
 </div>
+

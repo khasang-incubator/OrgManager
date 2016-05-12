@@ -1,5 +1,6 @@
 package io.khasang.orgmanager.controller;
 
+import io.khasang.orgmanager.dao.IRoleDao;
 import io.khasang.orgmanager.dao.IUserDao;
 import io.khasang.orgmanager.model.Entities.Role;
 import io.khasang.orgmanager.model.Entities.User;
@@ -15,6 +16,9 @@ public class UserController {
     @Autowired
     IUserDao userDao;
 
+    @Autowired
+    IRoleDao roleDao;
+
     @RequestMapping("/admin/users")
     public String adminusers(Model model) {
         model.addAttribute("items", userDao.getAll());
@@ -24,6 +28,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/add")
     public String changeUser(Model model) {
         model.addAttribute("users", userDao.getAll());
+        model.addAttribute("roles", roleDao.getAll());
         model.addAttribute("title", "Создать пользователя");
         return "changeuser";
     }
@@ -35,6 +40,7 @@ public class UserController {
         model.addAttribute("title", "Редактировать пользователя");
         model.addAttribute("item", user);
         model.addAttribute("users", userDao.getAll());
+        model.addAttribute("roles", roleDao.getAll());
         return "changeuser";
     }
 
@@ -47,8 +53,6 @@ public class UserController {
         User user;
         if (id == null) {
             user = new User();
-            Role role1 = new Role();
-            user.setRole(role1);
         } else {
             user = userDao.get(id);
         }
@@ -58,7 +62,7 @@ public class UserController {
             user.setManager(manager);
         }
         user.setPassword(password);
-        user.getRole().setName(role);
+        user.setRole(roleDao.getRoleByName(role));
         user.setName(name);
         userDao.save(user);
         model.addAttribute("item", user);

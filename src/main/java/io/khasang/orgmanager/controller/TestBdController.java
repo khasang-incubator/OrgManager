@@ -22,13 +22,23 @@ public class TestBdController {
     @Autowired
     GenericDao<News> newsDao;
 
+    @RequestMapping("/createroles")
+    public  String createroles(Model model){
+        Role role=new Role();
+        role.setName("USER");
+        roleDao.save(role);
+        Role adminrole=new Role();
+        adminrole.setName("ADMIN");
+        roleDao.save(adminrole);
+        model.addAttribute("result","It seems to be ok");
+        return "backup";
+    }
     @RequestMapping("/createuser")
     public  String createuser(Model model){
         User user=new User();
         user.setName("user");
         user.setPassword("password");
-        Role role=new Role();
-        role.setName("USER");
+        Role role=roleDao.getRoleByName("USER");
         user.setRole(role);
         userDao.save(user);
         model.addAttribute("result","It seems to be ok");
@@ -40,8 +50,7 @@ public class TestBdController {
         User user=new User();
         user.setName("admin");
         user.setPassword("password");
-        Role role=new Role();
-        role.setName("ADMIN");
+        Role role=roleDao.getRoleByName("ADMIN");
         user.setRole(role);
         userDao.save(user);
         model.addAttribute("result","It seems to be ok");

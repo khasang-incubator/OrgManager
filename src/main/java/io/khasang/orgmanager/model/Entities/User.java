@@ -20,11 +20,11 @@ public class User {
     @Column
     private String password;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne//(cascade=CascadeType.ALL)
     @JoinColumn(name = "roleId")
     private Role role;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne//(cascade=CascadeType.ALL)
     @JoinColumn(name = "managerId")
     private User manager;
 

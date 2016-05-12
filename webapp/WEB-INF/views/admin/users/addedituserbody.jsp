@@ -12,8 +12,10 @@
         <input name="password"  value="${item.password}"  type="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <label for="inputRole">Role</label>
         <select  name="role" id="inputRole" class="form-control">
-            <option>USER</option>
-            <option>ADMIN</option>
+            <option></option>
+            <c:forEach items="${roles}" var="role">
+                <option><c:out value="${role.name}"/></option>
+            </c:forEach>
         </select>
 
         <label for="manager">Начальник</label>

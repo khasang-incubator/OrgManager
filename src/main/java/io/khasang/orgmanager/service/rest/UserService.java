@@ -27,7 +27,7 @@ public class UserService {
         return userDao.getAll();
     }
 
-    @RequestMapping(value = "/rest/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/rest/users", method = RequestMethod.POST)
     public ResponseEntity<String> createEmployee(@RequestBody User user)
     {
         System.out.println(user);

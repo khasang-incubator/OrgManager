@@ -52,5 +52,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginProcessingUrl("/j_spring_security_check")
                 .failureUrl("/login?error=true");
+        //bad for security but need to be here in order rest service to run so if you know better approach feel free to change it/
+        http.csrf().disable();
     }
 }

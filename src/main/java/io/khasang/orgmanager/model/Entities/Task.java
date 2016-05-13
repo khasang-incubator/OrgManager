@@ -1,6 +1,7 @@
 package io.khasang.orgmanager.model.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Task {
     @JoinColumn(name = "parentTaskId")
     private Task parentTask;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "parentTask")
     public Set<Task> childTasks= new HashSet<>();
 

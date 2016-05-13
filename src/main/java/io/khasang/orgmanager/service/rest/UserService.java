@@ -22,6 +22,11 @@ public class UserService {
        return userDao.get(id);
     }
 
+    @RequestMapping( value = "/rest/user/byname/{name}", method = RequestMethod.GET)
+    public User getUserByName(@PathVariable("name") String name){
+        return userDao.getUserByName(name);
+    }
+
     @RequestMapping( value = "/rest/users", method = RequestMethod.GET)
     public List<User> getUsers() {
         return userDao.getAll();

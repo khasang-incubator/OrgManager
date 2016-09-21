@@ -1,2 +1,8 @@
 /.idea/
 *.git.iml
+*.iml
+pom.xml
+*.class
+target/
+build/
+*~
